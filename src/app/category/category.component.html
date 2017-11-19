@@ -1,0 +1,30 @@
+<div style="margin-left: 15%; margin-right: 15%; margin-top: 5%">
+  <div *ngIf="category === null">
+    <h4 align="center">
+      Categories
+    </h4>
+    <div class="list-group" *ngFor="let category of categories">
+      <a [routerLink]="['/categories', category]" class="list-group-item list-group-item-action list-group-item-dark" style="color: #17a2b8; font-weight: 400; font-size: large; text-transform: capitalize">{{category}}</a>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="category" style="width: 80%; margin-left: 15%; margin-top: 5%">
+  <div class="card text-white bg-info mb-3" style="max-width: 80%;"  *ngFor="let item of filterCategories" >
+      <div class="card-header" >
+        <h4 class="card-title" style="text-transform: capitalize">
+          {{item.blogTitle}}
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 3%" >
+          <span style="color: white; margin-left: 0; margin-right: 3%;text-transform: capitalize">Author : {{item.author}}</span>
+          <span style="color: white; margin-left: 3%;text-transform: capitalize" >Category : {{item.category}}</span>
+          <button  *ngIf="activeUser.status === true && !activeUser.favorite.includes(item.id)" type="button" title="Mark as Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons">favorite</i></button>
+          <button  *ngIf="activeUser.status === true && activeUser.favorite.includes(item.id)" type="button" title="Unmark Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons" style="color: red; ">favorite</i></button>
+        </h6>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{item.blogDescription}}</p>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.blog-container{
+  margin-left: 8%;
+  float: left;
+  width: 55%;
+
+}
+button{
+  float: right;
+  height: 10%;
+}

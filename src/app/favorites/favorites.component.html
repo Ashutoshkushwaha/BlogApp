@@ -1,0 +1,20 @@
+<div style="margin-left: 15%; margin-top: 5%; width: 80%">
+  <div   *ngFor="let blog of blogs" >
+    <div class="card text-white bg-info mb-3" style="max-width: 80%;" *ngIf="activeUser.favorite.includes(blog.id)">
+      <div class="card-header">
+        <h4 class="card-title">
+          {{blog.blogTitle}}
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 3%" >
+          <span style="color: white; margin-left: 0; margin-right: 3% ">Author : {{blog.author}}</span>
+          <span style="color: white; margin-left: 3% " >Category : {{blog.category}}</span>
+          <button type="button" title="Unmark Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(blog.id) "><i  class="small material-icons" style="color: red; ">favorite</i></button>
+        </h6>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{blog.blogDescription}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

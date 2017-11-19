@@ -1,0 +1,173 @@
+{
+  "blogs": [
+    {
+      "id": 2,
+      "blogTitle": "Adventure",
+      "blogDescription": "This is what adventure feels like",
+      "author": "Sargam ",
+      "category": "lifestyle"
+    },
+    {
+      "id": 3,
+      "blogTitle": "Money",
+      "blogDescription": "This is how Money controls people",
+      "author": "Akul jain",
+      "category": "lifestyle"
+    },
+    {
+      "id": 4,
+      "blogTitle": "Happiness",
+      "blogDescription": "That moment in life is called happiness",
+      "author": "Sanjay Godara",
+      "category": "Motivation"
+    },
+    {
+      "id": 5,
+      "blogTitle": "Hardwork, key to success",
+      "blogDescription": "Work hard, play hard",
+      "author": "Ankit Verma",
+      "category": "Motivation"
+    },
+    {
+      "id": 6,
+      "blogTitle": "Internet",
+      "blogDescription": "Internet has made our life easier",
+      "author": "Abhishek kumar",
+      "category": "Education"
+    },
+    {
+      "id": 7,
+      "blogTitle": "checking",
+      "blogDescription": "Check",
+      "author": "Abhishek kumar",
+      "category": "Education"
+    },
+    {
+      "id": 8,
+      "blogTitle": "Tv shows",
+      "blogDescription": "TV shows are great",
+      "author": "Abhishek kumar",
+      "category": "Education"
+    },
+    {
+      "id": 9,
+      "blogTitle": "Random",
+      "blogDescription": "Randomly selected path",
+      "author": "Abhishek kumar",
+      "category": "Lifestyle"
+    },
+    {
+      "id": 10,
+      "blogTitle": "Investments",
+      "blogDescription": "Invest for future",
+      "author": "Akul jain",
+      "category": "lifestyle"
+    },
+    {
+      "id": 11,
+      "blogTitle": "Savings",
+      "blogDescription": "Savings will save you in future.",
+      "author": "Akul jain",
+      "category": "lifestyle"
+    },
+    {
+      "id": 12,
+      "blogTitle": "Movies",
+      "blogDescription": "movies manipulate people",
+      "author": "Ashutosh kushwaha",
+      "category": "lifestyle"
+    },
+    {
+      "id": 14,
+      "blogTitle": "History",
+      "blogDescription": "History is wonderful",
+      "author": "Ashutosh kushwaha",
+      "category": "Education"
+    },
+    {
+      "id": 15,
+      "blogTitle": "Hip-Hop",
+      "blogDescription": "Dance describes what you feel",
+      "author": "Ashutosh kushwaha",
+      "category": "dance"
+    },
+    {
+      "id": 16,
+      "blogTitle": "rap music",
+      "blogDescription": "Eminem is the best rapper",
+      "author": "Ashutosh kushwaha",
+      "category": "music"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Ashutosh kushwaha",
+      "username": "ashutoshkushwaha",
+      "password": "12345",
+      "favorite": [
+        15,
+        3
+      ],
+      "status": false
+    },
+    {
+      "id": 2,
+      "name": "Sargam",
+      "username": "sargam123",
+      "password": "12345",
+      "favorite": [
+        2,
+        3
+      ],
+      "status": false
+    },
+    {
+      "id": 3,
+      "name": "Akul jain",
+      "username": "akuljain",
+      "password": "12345",
+      "favorite": [
+        2,
+        4,
+        null
+      ],
+      "status": false
+    },
+    {
+      "id": 4,
+      "name": "Sanjay godara",
+      "username": "sanjaygodara",
+      "password": "12345",
+      "favorite": [
+        4,
+        5
+      ],
+      "status": false
+    },
+    {
+      "id": 5,
+      "name": "saddasd",
+      "username": "sadas",
+      "password": "sads",
+      "favorite": [],
+      "status": false
+    },
+    {
+      "id": 6,
+      "name": "Ankit verma",
+      "username": "ankitverma",
+      "password": "12345",
+      "favorite": [],
+      "status": false
+    },
+    {
+      "id": 7,
+      "name": "Amar meena",
+      "username": "amarmeena",
+      "password": "12345",
+      "favorite": [],
+      "status": false
+    }
+  ]
+}

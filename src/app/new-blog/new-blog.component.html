@@ -1,0 +1,40 @@
+<div class="box1">
+  <form class="container" #f = "ngForm" (ngSubmit)="checkBlog()">
+    <div>
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          Blog Title <br>
+          <input type="text" style="text-transform: capitalize" placeholder="Your Title" name = "title" [(ngModel)]="newBlog.blogTitle" required="required"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          Blog category <br>
+          <input type="text" style="text-transform: capitalize" placeholder="Your Category" name = "category" [(ngModel)]="newBlog.category"  required/>
+        </div>
+      </div >
+      <div >
+        <div>
+          Description <br>
+          <textarea type="text" name = "description" style="text-transform: capitalize" placeholder="Write description" [(ngModel)]="newBlog.blogDescription" required></textarea>
+        </div>
+      </div>
+    </div>
+    <div  style="margin-top: 10px">
+      <button class="btn " type="submit" style=" background-color: #17a2b8 "> {{buttonText}}</button>
+    </div>
+
+  </form>
+</div>
+<div class= "box2">
+  <h4 align="center">Your Blogs</h4>
+  <div class="card text-white bg-info mb-3" style="max-width: 40rem;" *ngFor="let item of filteredblog">
+    <div class="card-header"><h4 class="card-title" style="text-transform: capitalize">{{item.blogTitle}}</h4></div>
+    <div >
+      <button type="button"  title="Edit Blog" (click)="update(item.blogTitle)" class="btn"  style="width: 32%" ><i class="small material-icons">edit</i></button>
+      <button type="button" title="Delete Blog" class="btn"  style="width: 33%" (click)="deletePost(item.blogTitle)"><i class="small material-icons"   >delete</i></button>
+      <button *ngIf = !activeUser.favorite.includes(item.id) type="button" title="Mark as Favorite" class="btn" style="width: 33%" (click)="markFavorite(item.id)" ><i class="small material-icons" >favorite</i></button>
+      <button *ngIf= activeUser.favorite.includes(item.id) type="button" title="Unmark Favorite" class="btn" style="width: 33%" (click)="markFavorite(item.id)" ><i class="small material-icons" style="color: red">favorite</i></button>
+    </div>
+  </div>
+</div>
