@@ -7,23 +7,23 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class BlogsService {
 
-  private _blogUrl = 'http://localhost:3000/blogs';
+  private _blogUrl = 'https://blogapp-ashutosh.herokuapp.com/blogs';
 
   constructor(private _http: HttpClient) {
   }
   getBlogs(): Observable<IBlog[]> {
-    return this._http.get<IBlog[]>(this._blogUrl)
-      .do(data => console.log('All : ' + JSON.stringify(data)));
+    return this._http.get<IBlog[]>(this._blogUrl);
+
   }
 
   postBlogs(newBlog: IBlog): Observable<IBlog> {
-    return this._http.post<IBlog>(this._blogUrl, newBlog)
-    .do(data => console.log('All post : ' + JSON.stringify(data)));
+    return this._http.post<IBlog>(this._blogUrl, newBlog);
+
   }
 
   updateBlogs(newBlog: IBlog): Observable<IBlog> {
-    return this._http.patch<IBlog>(this._blogUrl + '/' + newBlog.id, newBlog )
-      .do(data => console.log('All post : ' + JSON.stringify(data)));
+    return this._http.patch<IBlog>(this._blogUrl + '/' + newBlog.id, newBlog );
+
   }
 
   deleteBlogs(id: number): Observable<IBlog> {

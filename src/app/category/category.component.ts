@@ -13,29 +13,28 @@ import {UsersService} from "../Admin/users.service";
 export class CategoryComponent implements OnInit {
 
   blogs: IBlog[];
-  Users: IUser[];
+  users: IUser[];
+  check = false;
   activeUser: IUser = {
     id: null,
     name: '',
     username: '',
     password: '',
     favorite: [],
-    status: null
+    status: false
   };
   category: string = null;
   categories: String[] = [];
   filterCategories: IBlog[] = [];
   constructor(private _blogservice: BlogsService, private _route: ActivatedRoute, private _userService: UsersService) { }
   ngOnInit(): void {
+    this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+    if (this.activeUser) {
+      this.check = true;
+    }
     this.category = this._route.snapshot.paramMap.get('id');
-
     this._blogservice.getBlogs()
       .subscribe(data => {
-        this._userService.getUsers()
-          .subscribe( user => {
-            this.Users = user;
-            this.activeUser = this.Users.find(item => item.status === true);
-          });
         this.blogs = data;
         data.forEach(item => {
           if (!this.categories.includes(item.category)) {
@@ -57,5 +56,6 @@ export class CategoryComponent implements OnInit {
       delete this.activeUser.favorite[this.activeUser.favorite.findIndex(item => item === id)];
       this._userService.changeActive(this.activeUser).subscribe();
     }
+    sessionStorage.setItem('activeUser', JSON.stringify(this.activeUser));
   }
 }

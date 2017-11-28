@@ -85,18 +85,18 @@
       "category": "Education"
     },
     {
-      "id": 15,
-      "blogTitle": "Hip-Hop",
-      "blogDescription": "Dance describes what you feel",
-      "author": "Ashutosh kushwaha",
-      "category": "dance"
-    },
-    {
       "id": 16,
       "blogTitle": "rap music",
       "blogDescription": "Eminem is the best rapper",
       "author": "Ashutosh kushwaha",
       "category": "music"
+    },
+    {
+      "id": 17,
+      "blogTitle": "Navy ",
+      "blogDescription": "Awesome life",
+      "author": "Ashutosh kushwaha",
+      "category": "Defence"
     }
   ],
   "users": [
@@ -107,9 +107,13 @@
       "password": "12345",
       "favorite": [
         15,
-        3
+        3,
+        null,
+        4,
+        5,
+        6
       ],
-      "status": false
+      "status": true
     },
     {
       "id": 2,

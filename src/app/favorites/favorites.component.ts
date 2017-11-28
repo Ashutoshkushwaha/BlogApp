@@ -27,16 +27,15 @@ export class FavoritesComponent implements OnInit {
     this._blogService.getBlogs()
       .subscribe(data => {
         this.blogs = data;
-        this._userService.getUsers()
-          .subscribe(user => {
-            this.user = user;
-            this.activeUser = this.user.find( u => u.status === true);
-          });
+        this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+
       });
   }
   markFavorite(id: number) {
       delete this.activeUser.favorite[this.activeUser.favorite.findIndex(item => item === id)];
       this._userService.changeActive(this.activeUser).subscribe();
+      sessionStorage.setItem('activeUser', JSON.stringify(this.activeUser));
+
   }
 
 }

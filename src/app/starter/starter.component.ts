@@ -14,13 +14,11 @@ export class StarterComponent implements OnInit {
   check = false;
   constructor(private _userService: UsersService ) { }
   ngOnInit(): void {
-   this._userService.getUsers().subscribe(data => {
-     this.Users = data;
-     this.activeUser = this.Users.find(u => u.status === true);
-     if (this.activeUser) {
-       this.check = this.activeUser.status;
-     }
-   });
+    this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+    if (this.activeUser) {
+      this.check = this.activeUser.status;
+    }
+
   }
 
 }

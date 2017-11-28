@@ -10,7 +10,6 @@ import {IUser} from '../users';
 })
 export class ParentAdminComponent implements OnInit {
 
-  Users: IUser[];
   activeUser: IUser = {
     id: null,
     name: '',
@@ -20,14 +19,7 @@ export class ParentAdminComponent implements OnInit {
     status: null
   };
   ngOnInit(): void {
-    this._userService.getUsers()
-      .subscribe( data => {
-        this.Users = data;
-        this.activeUser = this.Users.find(item => item.status === true);
-
-
-      });
-
+    this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
   }
   constructor(private _router: Router, private _userService: UsersService) { }
   onLogOut() {
@@ -35,6 +27,7 @@ export class ParentAdminComponent implements OnInit {
       this.activeUser.status = false;
     }
     this._userService.changeActive(this.activeUser).subscribe();
+    sessionStorage.removeItem('activeUser');
     location.reload();
     this._router.navigate(['login']);
   }

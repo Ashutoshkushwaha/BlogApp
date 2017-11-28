@@ -16,6 +16,7 @@ import { ParentAdminComponent } from './Admin/parent-admin/parent-admin.componen
 import { StarterComponent } from './starter/starter.component';
 import {UsersService} from './Admin/users.service';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ])
 
   ],
-  providers: [BlogsService, UsersService],
+  providers: [BlogsService, UsersService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

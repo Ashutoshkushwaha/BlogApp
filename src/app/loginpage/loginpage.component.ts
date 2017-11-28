@@ -8,7 +8,7 @@ import {IUser} from '../Admin/users';
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css'],
 })
-export class LoginpageComponent  implements OnInit{
+export class LoginpageComponent  implements OnInit {
 
   Users: IUser[];
   activeUser: IUser;
@@ -28,7 +28,7 @@ export class LoginpageComponent  implements OnInit{
     this.activeUser = this.Users.find(u => u.username === username && u.password === password);
     if (this.activeUser) {
       this.activeUser.status = true;
-      this._userService.changeActive(this.activeUser).subscribe();
+      sessionStorage.setItem('activeUser', JSON.stringify(this.activeUser));
       location.reload();
       this._router.navigate(['dashboard']);
     } else {

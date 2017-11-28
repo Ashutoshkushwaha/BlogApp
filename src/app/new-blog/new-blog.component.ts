@@ -14,8 +14,14 @@ export class NewBlogComponent  implements OnInit {
 
   buttonText = 'Post Blog';
   blogs: IBlog[];
-  user: IUser[];
-  activeUser: IUser;
+  activeUser: IUser = {
+    id: null,
+    'name': '',
+    'username': '',
+    'password': '',
+    'favorite': [],
+    'status': false
+  };
   filteredblog: IBlog[] = [];
   newBlog: IBlog = {
     'id': null,
@@ -30,36 +36,29 @@ export class NewBlogComponent  implements OnInit {
     this._blogService.getBlogs()
       .subscribe(data => {
         this.blogs = data;
-        this._userService.getUsers()
-          .subscribe(user => {
-            this.user = user;
-            this.activeUser = this.user.find( u => u.status === true);
-            this.newBlog.author = this.activeUser.name;
+        this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+        console.log(this.activeUser);
+        this.newBlog.author = this.activeUser.name;
             this.blogs.forEach( item => {
               if (item.author === this.activeUser.name) {
                 this.filteredblog.push(item);
               }
             });
-          });
       });
-
-
   }
   checkBlog() {
     if (this.newBlog.id === null && this.newBlog.blogTitle !== '') {
       this.BlogPost(this.newBlog);
     } else {
       this.updateBlog(this.newBlog);
-      location.reload();
     }
   }
   BlogPost(blog: IBlog) {
     this._blogService.postBlogs(blog)
       .subscribe(data => {
-        console.log(data);
+        this.filteredblog.push(blog);
+        location.reload();
       });
-    this.filteredblog.push(blog);
-    location.reload();
   }
   update(title: string) {
     this.buttonText = 'Update post';
@@ -68,16 +67,15 @@ export class NewBlogComponent  implements OnInit {
   updateBlog(blog: IBlog) {
     this._blogService.updateBlogs(blog)
       .subscribe(data => {
-        console.log(data);
+        location.reload();
       });
   }
 
   deletePost(title: string) {
     this.newBlog = this.blogs.find( b => b.blogTitle === title );
-    console.log(this.newBlog);
-    this._blogService.deleteBlogs(this.newBlog.id).subscribe();
-    location.reload();
-
+    this._blogService.deleteBlogs(this.newBlog.id).subscribe(data => {
+      location.reload();
+    });
   }
   markFavorite(id: number) {
     if (!this.activeUser.favorite.includes(id)) {
@@ -87,6 +85,7 @@ export class NewBlogComponent  implements OnInit {
       delete this.activeUser.favorite[this.activeUser.favorite.findIndex(item => item === id)];
       this._userService.changeActive(this.activeUser).subscribe();
     }
+    sessionStorage.setItem('activeUser', JSON.stringify(this.activeUser));
   }
 
 }

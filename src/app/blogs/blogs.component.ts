@@ -12,7 +12,6 @@ import {UsersService} from '../Admin/users.service';
 export class BlogsComponent  implements OnInit {
 
   check = false;
-  user: IUser[];
   activeUser: IUser;
   blog: IBlog[] = [];
   filteredBlogs: IBlog[];
@@ -30,25 +29,24 @@ export class BlogsComponent  implements OnInit {
           .subscribe(blogs => {
             this.blog = blogs;
             this.filteredBlogs = blogs;
-            this._userService.getUsers()
-              .subscribe(user => {
-                this.user = user;
-                this.activeUser = this.user.find(u => u.status === true);
-                if (this.activeUser) {
-                  this.check = true;
-                }
-              });
+            this.activeUser = JSON.parse(sessionStorage.getItem('activeUser'));
+            if (this.activeUser) {
+              this.check = true;
+            }
           });
   }
   markFavorite(id: number) {
     if (!this.activeUser.favorite.includes(id)) {
       this.activeUser.favorite.push((this.blog.find( b => b.id === id)).id);
       console.log(this.activeUser.favorite);
+      sessionStorage.setItem('activeUser', JSON.stringify(this.activeUser));
       this._userService.changeActive(this.activeUser).subscribe();
+
     }else {
       delete this.activeUser.favorite[this.activeUser.favorite.findIndex(item => item === id)];
       this._userService.changeActive(this.activeUser).subscribe();
     }
+
   }
   performFilter(filterBy: string): IBlog[] {
     filterBy = filterBy.toLocaleLowerCase();

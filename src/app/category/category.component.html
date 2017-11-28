@@ -19,8 +19,8 @@
         <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 3%" >
           <span style="color: white; margin-left: 0; margin-right: 3%;text-transform: capitalize">Author : {{item.author}}</span>
           <span style="color: white; margin-left: 3%;text-transform: capitalize" >Category : {{item.category}}</span>
-          <button  *ngIf="activeUser.status === true && !activeUser.favorite.includes(item.id)" type="button" title="Mark as Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons">favorite</i></button>
-          <button  *ngIf="activeUser.status === true && activeUser.favorite.includes(item.id)" type="button" title="Unmark Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons" style="color: red; ">favorite</i></button>
+          <button  *ngIf="check === true && !activeUser.favorite.includes(item.id)" type="button" title="Mark as Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons">favorite</i></button>
+          <button  *ngIf="check === true && activeUser.favorite.includes(item.id)" type="button" title="Unmark Favorite"  class="btn" style="margin-top: -10px; float: right" (click)="markFavorite(item.id) "><i  class="small material-icons" style="color: red; ">favorite</i></button>
         </h6>
       </div>
       <div class="card-body">
